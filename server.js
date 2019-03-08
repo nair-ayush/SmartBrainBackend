@@ -1,7 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 const db = {
     users: [
@@ -72,6 +75,10 @@ app.post('/image', (req, res) => {
         res.status(404).json('No such user');
     }
 })
-app.listen(3000, () => {
-    console.log('App is listening on Port 3000');
-})
+app.listen(3000, (err) => {
+    if (err) {
+        throw err;
+    } else {
+        console.log('App is listening on Port 3000');
+    }
+});
