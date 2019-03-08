@@ -31,7 +31,7 @@ app.get('/', (req,res) => {
 })
 app.post('/signin', (req,res) => {
     if (req.body.email === db.users[0].email && req.body.password === db.users[0].password) {
-        res.json('success');
+        res.json(db.users[0]);
     } else {
         res.status(400).json('Error signing in');
     }
@@ -42,7 +42,6 @@ app.post('/register', (req, res) => {
         id: '125',
         name: name,
         email: email,
-        password: password,
         entries: 0,
         joined: new Date()
     })
@@ -61,7 +60,7 @@ app.get('/profile/:id', (req, res) =>{
         res.status(404).json('No such user');
     }
 })
-app.post('/image', (req, res) => {
+app.put('/image', (req, res) => {
     const { id } = req.body;
     let found = false;
     db.users.forEach(user => {
