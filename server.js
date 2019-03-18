@@ -29,7 +29,7 @@ app.post('/register', (req, res) => { register.handleRegisterPost(req,res,db,bcr
 app.get('/profile/:id', (req, res) =>{ profile.handleProfileGet(req,res,db) });
 app.put('/image', (req, res) => { image.handleImagePut(req,res,db) });
 app.post('/imageurl', (req, res) => { image.handleClarifaiCall(req,res) });
-app.listen(process.event.PORT || 3000, (err) => {
+app.listen(process.env.PORT || 3000, (err) => {
     if (err) {
         throw err;
     } else {
